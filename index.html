@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/style.css">
+    <title>Github User Search App</title>
+</head>
+<body>
+    <header class="header container">
+        <h1 class="header__title">devfinder</h1>
+        <div class="header__mode">Light<i class="fa fa-adjust"></i></div>
+        <div class="header__search rounded pd-10">
+            <i class="fa fa-search header__search-icon mg-10"></i> 
+            <form action="" method="GET">
+                <input type="search" class="mg-10 header__search-text" placeholder="Search Github username..."> 
+                <button type="button" class="header__search-button mg-10 rounded">Search</button>
+            </form>
+            
+        </div>
+    </header>
+    <main class="data container rounded pd-10">
+        <img src="./media/github180x180.jpg" class="data__image mg-10" alt="">
+        <div class="data__header">
+            <h2 class="data__title">The Octocat</h2>
+            <a href="" class="data__link" target="_blank">@<span class="data__link--span">octocat</span></a>
+            <h3 class="data__date">Joined <span class="data__date--span">25 Jan 2011</span></h3>
+        </div>
+        <div class="data__body mg-10">
+            <p class="data__description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni quo rerum alias obcaecati ab delectus error eum ut modi vitae.</p>
+            <div class="data__numbers mg-10 pd-10 rounded">
+                <div class="center">
+                    <h4 class="data--normal">Repos</h4>
+                    <div class="data__repos data--bold">8</div>
+                </div>
+                <div class="center">
+                    <h4 class="data--normal">Followers</h4>
+                    <div class="data__followers data--bold">3938</div>
+                </div>
+                <div class="center">
+                    <h4 class="data--normal">ID</h4>
+                    <div class="data__id data--bold">9</div>
+                </div>
+            </div>
+            <div>
+                <ul class="data__list">
+                    <li class="data__location">
+                        <div class="data__list--display">
+                            <i class="fa fa-map-marker data__list-icon"></i>
+                            <p>San Francisco</p> 
+                        </div>
+                    </li>
+                    <li class="data__url">
+                        <div class="data__list--display">
+                            <i class="fa fa-link data__list-icon"></i>
+                            <p>https://github.blog</p> 
+                        </div>
+                    </li>
+                    <li class="data__twitter">
+                        <div class="data__list--display data--active">
+                            <i class="fa fa-twitter data__list-icon"></i>
+                            <p>Not Available</p> 
+                        </div>
+                    </li>
+                    <li class="data__alias">
+                        <div class="data__list--display">
+                            <i class="fa fa-building data__list-icon"></i>
+                            <p>@github</p> 
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <h5 class="center">Valeria Silveira - valeriasilveira.com.ar</h5>
+    </footer>
+    <script src="https://use.fontawesome.com/bb872be55d.js"></script>
+    <script src="./Javascript/script.js"></script>
+</body>
+</html>

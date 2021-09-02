@@ -1,0 +1,243 @@
+//Fonts
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+//Variables
+$bgnd: rgb(8, 16, 59);
+$content: rgb(27, 34, 75);
+$light-blue: rgb(56, 83, 233);
+$disabled: rgb(161, 160, 160);
+$white: #ffffff;
+$font: 'Space Mono', monospace;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 14px;
+    background-color: $bgnd;
+    color: $white;
+    font-family: $font;
+    min-height: 100vh;
+}
+
+//Utilidades
+.container {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.center {
+    text-align: center;
+}
+
+.rounded {
+    border-radius: 2rem;
+}
+
+.mg-10 {
+    margin: 1rem;
+}
+
+.pd-10 {
+    padding: 1rem;
+}
+
+
+//Header
+.header{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    justify-items: end;
+    align-items: center;
+    &__title{
+        justify-self: self-start;
+        margin: 4rem 1rem;
+    }
+    &__search {
+        grid-column: 1 / 3;
+        width: 100%;
+        background-color: $content;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        &-icon{
+            transform: scale(2);
+            color: $light-blue;
+        }
+        &-text {
+            width: 60%;
+            background-color: $content;
+            border: none;
+            color: $white;
+            font-family: $font;
+            &::placeholder {
+                color: $white;
+            }
+        }
+        &-button {
+            background-color: $light-blue;
+            border: none;
+            color: $white;
+            font-family: $font;
+            padding: 2rem;
+            justify-self: end;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+    }
+    &__mode {
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 0.3rem;
+    }
+}
+
+//Main
+.data {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: repeat(2, auto);
+    align-items: center;
+    background-color: $content;
+    margin-top: 2rem;
+    &__image {
+        width: 10rem;
+        border-radius: 50%;
+        margin-top: 2rem;
+        margin-left: 2rem;
+    }
+    &__header {
+        margin-top: 2rem;
+    }
+    &__title {
+        font-size: 2rem;
+        text-transform: capitalize;
+    }
+    &__link {
+        text-decoration: none;
+        color: $light-blue;
+    }
+    &__date {
+        font-weight: normal;
+    }
+    &__body {
+        grid-column: 1 / 3;
+    }
+    &__numbers {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        background-color: $bgnd;
+        margin: 2rem 0;
+        padding: 3rem;
+        h4 {
+            font-size: 1.4rem;
+        }
+    }
+    &--normal {
+        font-weight: normal;
+    }
+    &--bold{
+        font-weight: bold;
+    }
+    &__list {
+        list-style-type: none;
+        li {
+            margin: 1rem;  
+        }
+        &--display {
+            display: flex;
+            align-items: center;
+            p {
+                padding-left: 2rem;
+            }
+        }
+        &-icon {
+            transform: scale(2);
+        }
+    }
+    &--active {
+        i, p {
+            color: $disabled;
+        }
+    }
+}
+
+footer {
+    position: absolute;
+    bottom: 1rem;
+    left: -50%;
+    right: -50%;/**/
+    h5 {
+        font-weight: normal;
+        font-size: 1.4rem;
+    }
+    
+}
+
+@media (min-width: 480px) {
+    .data {
+        &__list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, auto);
+        }
+        &__url {
+            grid-column: 1 / 2;
+        }
+        &__twitter {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 900px;
+    }
+    //Header
+    .header__search{
+        justify-content: space-between;
+        &-text {
+                width: 75%;
+            }
+    }
+
+    //Main
+    .data {
+        grid-template-columns: 1fr 3fr;
+        padding: 2rem;
+        &__image {
+            grid-column: 1 /2;
+            justify-self: center;
+        }
+        &__header {
+            grid-column: 2 / 3;
+            margin-left: 1rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-rows: repeat(2, auto);
+        }
+        &__link {
+            grid-column: 1 / 2;
+        }
+        &__date {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+            justify-self: end;
+        }
+        &__body {
+            grid-column: 2 / 3;
+        }
+    }
+
+}
