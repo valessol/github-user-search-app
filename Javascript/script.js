@@ -7,45 +7,17 @@ const search = () => {
 }
 
 const getDataFromAPI = async () => {
-    const data = await fetch ("https://api.github.com/repositories");
-    const response = await data.json();
-    //console.log(response);
-    return response;
-}
-
-
-const getUserIndex = async () => {
-    const data = await getDataFromAPI();
-    const username = search();
-    const userIndex = data.findIndex((p)=>p.owner.login === username);
-    //if (!userIndex) return false;
-    return userIndex;
-}
-
-// Prueba cambiando de API****************************
-const getDataFromAPIU = async () => {
-    const user = 'octocat'
+    //const user = search();
+    const user = 'wycats';
     const data = await fetch (`https://api.github.com/users/${user}`);
     const response = await data.json();
-    console.log(response);
+    //console.log(response)
     return response;
-}
-
-getDataFromAPIU()
-
-//********************************** */
-
-const searchedUser = async () => {
-    const data = await getDataFromAPI ();
-    const userIndex = await getUserIndex();
-    //if (userIndex === false) return
-    const user = data[userIndex];
-    return user;
 }
 
 const replaceAvatar = async () => {
-    const user = await searchedUser();
-    const avatar = user.owner.avatar_url;
+    const userInfo = await getDataFromAPI();
+    const avatar = userInfo.avatar_url;
 
     const userImage = document.querySelector('.data__image');
     userImage.src = avatar;
@@ -53,8 +25,8 @@ const replaceAvatar = async () => {
 }
 
 const replaceUsername = async () => {
-    const user = await searchedUser();
-    const username = user.owner.login;
+    const userInfo = await getDataFromAPI();
+    const username = userInfo.login;
 
     const userTitle = document.querySelector('.data__title');
     userTitle.textContent = username;
@@ -62,9 +34,9 @@ const replaceUsername = async () => {
 }
 
 const replaceLink = async () => {
-    const user = await searchedUser();
-    const username = user.owner.login;
-    const userURL = user.owner.html_url;
+    const userInfo = await getDataFromAPI();
+    const username = userInfo.login;
+    const userURL = userInfo.html_url;
 
     const userLinkHTML = document.querySelector('.data__link--span');
     userLinkHTML.textContent = username;
@@ -74,9 +46,19 @@ const replaceLink = async () => {
     return
 }
 
+const replaceDate = async () => {
+    const userInfo = await getDataFromAPI();
+    const date = userInfo.created_at;
+    const newDate = new Date (date)
+    
+    const userJoin = document.querySelector('.data__date');
+    userJoin.textContent = newDate.toDateString();
+    return
+}
+
 const replaceDescription = async () => {
-    const user = await searchedUser();
-    const userDescription = user.description;
+    const user = await getDataFromAPI();
+    const userDescription = user.bio;
 
     const userDesc = document.querySelector('.data__description');
     userDesc.textContent = userDescription;
@@ -84,8 +66,8 @@ const replaceDescription = async () => {
 }
 
 const replaceRepos = async () => {
-    const user = await searchedUser();
-    const userReposUrl = user.owner.repos_url;
+    const user = await getDataFromAPI();
+    const userReposUrl = user.repos_url;
     const userRepos = await fetch(userReposUrl);
     const userReposJSON = await userRepos.json();
     
@@ -95,43 +77,78 @@ const replaceRepos = async () => {
 }
 
 const replaceFollowers = async () => {
-    const user = await searchedUser();
-    const userFollowersUrl = user.owner.followers_url;
+    const user = await getDataFromAPI();
+    const userFollowersUrl = user.followers_url;
     const userFollowers = await fetch(userFollowersUrl);
     const userFollowersJSON = await userFollowers.json();
     
     const userFollowersNumber = document.querySelector('.data__followers');
     userFollowersNumber.textContent = userFollowersJSON.length;
-    //console.log(userFollowersJSON)
     return
 }
 
-const replaceId = async () => {
-    const user = await searchedUser();
-    const userId = user.owner.id;
+const replaceFollowing = async () => {
+    const user = await getDataFromAPI();
+    const username = user.login;
+    const userFollowing = await fetch(`https://api.github.com/users/${username}/following`);
+    const userFollowingJSON = await userFollowing.json();
     
-    const userIdNumber = document.querySelector('.data__id');
-    userIdNumber.textContent = userId;
-    //console.log(userIdUrl, userId)
+    const userFollowingNumber = document.querySelector('.data__following');
+    userFollowingNumber.textContent = userFollowingJSON.length;
     return
 }
 
+const replaceLocation = async () => {
+    const user = await getDataFromAPI();
+    const userLocation = user.location;
 
+    const userLoc = document.querySelector('.data__location');
+    userLoc.textContent = userLocation;
+    return
+}
+const replaceBlog = async () => {
+    const user = await getDataFromAPI();
+    const userBlog = user.blog;
 
+    const userB = document.querySelector('.data__blog');
+    userB.textContent = userBlog;
+    return
+}
+const replaceTwitter = async () => {
+    const user = await getDataFromAPI();
+    const userTwitter = user.twitter_username;
+
+    const userTwit = document.querySelector('.data__twitter');
+    userTwit.textContent = `@${userTwitter}`;
+    return
+}
+const replaceCompany = async () => {
+    const user = await getDataFromAPI();
+    const userCompany = user.company;
+
+    const userComp = document.querySelector('.data__company');
+    userComp.textContent = userCompany;
+    return
+}
 
 const click = ()=> {
-    searchedUser();
-    if (getUserIndex () === false) return
+    search();
+    getDataFromAPI();
     replaceAvatar()
     replaceUsername();
     replaceLink();
+    replaceDate();
     replaceDescription();
     replaceRepos();
     replaceFollowers();
-    replaceId();
+    replaceFollowing();
+    replaceLocation();
+    replaceBlog();
+    replaceTwitter();
+    replaceCompany();
+    console.log(getDataFromAPI().then(response =>(console.log(response))))
 }
 
 button.addEventListener('click', search)
 button.addEventListener('click', click)
 
-//searchedUser()
