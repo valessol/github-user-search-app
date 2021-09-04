@@ -10,10 +10,12 @@
 <body>
     <header class="header container">
         <h1 class="header__title">devfinder</h1>
-        <div class="header__mode">Light<i class="fa fa-adjust"></i></div>
+        <div class="header__mode">
+            <div class="header__mode-icon"><i class="fa fa-adjust header--icon"></i></div>
+        </div>
         <div class="header__search rounded pd-10">
             <i class="fa fa-search header__search-icon mg-10"></i> 
-            <form action="" method="GET">
+            <form action="" method="GET" class="header__search-form">
                 <input type="search" class="mg-10 header__search-text" placeholder="Search Github username..."> 
                 <button type="button" class="header__search-button mg-10 rounded">Search</button>
             </form>
@@ -21,7 +23,7 @@
         </div>
     </header>
     <main class="data container rounded pd-10">
-        <img src="./media/github180x180.jpg" class="data__image mg-10" alt="">
+        <img src="https://avatars.githubusercontent.com/u/583231?v=4" class="data__image mg-10" alt="">
         <div class="data__header">
             <h2 class="data__title">The Octocat</h2>
             <a href="" class="data__link" target="_blank">@<span class="data__link--span">octocat</span></a>
@@ -48,25 +50,25 @@
                     <li class="data__location">
                         <div class="data__list--display">
                             <i class="fa fa-map-marker data__list-icon"></i>
-                            <p class="data__location">San Francisco</p> 
+                            <p class="data__location-text">San Francisco</p> 
                         </div>
                     </li>
                     <li class="data__url">
                         <div class="data__list--display">
                             <i class="fa fa-link data__list-icon"></i>
-                            <p class="data__blog">https://github.blog</p> 
+                            <p class="data__blog-url">https://github.blog</p> 
                         </div>
                     </li>
-                    <li class="data__twitter">
-                        <div class="data__list--display data--active">
+                    <li class="data__twitter data--disabled">
+                        <div class="data__list--display">
                             <i class="fa fa-twitter data__list-icon"></i>
-                            <p class="data__twitter">Not Available</p> 
+                            <p class="data__twitter-user">Not Available</p> 
                         </div>
                     </li>
-                    <li class="data__alias">
+                    <li class="data__company">
                         <div class="data__list--display">
                             <i class="fa fa-building data__list-icon"></i>
-                            <p class="data__company">GitHub</p> 
+                            <p class="data__company-name">GitHub</p> 
                         </div>
                     </li>
                 </ul>
@@ -78,5 +80,6 @@
     </footer>
     <script src="https://use.fontawesome.com/bb872be55d.js"></script>
     <script src="./Javascript/script.js"></script>
+    <script src="./Javascript/mode.js"></script>
 </body>
 </html>

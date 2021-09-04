@@ -7,8 +7,8 @@ const search = () => {
 }
 
 const getDataFromAPI = async () => {
-    //const user = search();
-    const user = 'wycats';
+    const user = search();
+    //const user = 'octocat';
     const data = await fetch (`https://api.github.com/users/${user}`);
     const response = await data.json();
     //console.log(response)
@@ -101,32 +101,59 @@ const replaceFollowing = async () => {
 const replaceLocation = async () => {
     const user = await getDataFromAPI();
     const userLocation = user.location;
+    const userLoc = document.querySelector('.data__location-text');
 
-    const userLoc = document.querySelector('.data__location');
+    if (userLocation === null) {
+        const location = document.querySelector('.data__location');
+        location.classList.add('data--disabled');
+        userLoc.textContent = 'Not Available';
+        return;
+    }
+
     userLoc.textContent = userLocation;
     return
 }
 const replaceBlog = async () => {
     const user = await getDataFromAPI();
     const userBlog = user.blog;
+    const userB = document.querySelector('.data__blog-url');
 
-    const userB = document.querySelector('.data__blog');
+    if (userBlog === null) {
+        const blogUrl = document.querySelector('.data__url');
+        blogUrl.classList.add('data--disabled');
+        userB.textContent = 'Not Available';
+        return;
+    }
+
     userB.textContent = userBlog;
     return
 }
 const replaceTwitter = async () => {
     const user = await getDataFromAPI();
     const userTwitter = user.twitter_username;
+    const userTwit = document.querySelector('.data__twitter-user');
+    const dataTwitter = document.querySelector('.data__twitter');
 
-    const userTwit = document.querySelector('.data__twitter');
+    if (userTwitter === null) {    
+        userTwit.textContent = 'Not Available';
+        return;
+    }
+
+    dataTwitter.classList.remove('data--disabled');
     userTwit.textContent = `@${userTwitter}`;
     return
 }
 const replaceCompany = async () => {
     const user = await getDataFromAPI();
     const userCompany = user.company;
+    const userComp = document.querySelector('.data__company-name');
 
-    const userComp = document.querySelector('.data__company');
+    if (userCompany === null) {
+        const company = document.querySelector('.data__company');
+        company.classList.add('data--disabled');
+        userComp.textContent = 'Not Available';
+        return;
+    }
     userComp.textContent = userCompany;
     return
 }

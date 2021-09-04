@@ -8,6 +8,10 @@ $disabled: rgb(161, 160, 160);
 $white: #ffffff;
 $font: 'Space Mono', monospace;
 
+//Variables Ligth Mode
+$light-bgnd: rgb(206, 219, 235);
+$black: #000000;
+
 *{
     margin: 0;
     padding: 0;
@@ -50,6 +54,7 @@ body{
 }
 
 
+
 //Header
 .header{
     display: grid;
@@ -71,6 +76,10 @@ body{
         &-icon{
             transform: scale(2);
             color: $light-blue;
+        }
+        &-form {
+            display: flex;
+            width: 80%;
         }
         &-text {
             width: 60%;
@@ -97,6 +106,13 @@ body{
         text-transform: uppercase;
         font-weight: bold;
         letter-spacing: 0.3rem;
+        cursor: pointer;
+        &-icon::before {
+            content: 'Light';
+            color: $white;
+            margin-right: 1rem;
+         } 
+        
     }
 }
 
@@ -164,7 +180,7 @@ body{
             transform: scale(2);
         }
     }
-    &--active {
+    &--disabled {
         i, p {
             color: $disabled;
         }
@@ -202,11 +218,15 @@ footer {
 
 @media (min-width: 1024px) {
     .container {
-        max-width: 900px;
+        max-width: 800px;
     }
     //Header
     .header__search{
         justify-content: space-between;
+        &-icon::before {
+            content: '';
+            margin-left: 2rem;
+        }
         &-text {
                 width: 75%;
             }
@@ -234,10 +254,37 @@ footer {
             grid-column: 2 / 3;
             grid-row: 1 / 2;
             justify-self: end;
+            padding-right: 2rem;
         }
         &__body {
             grid-column: 2 / 3;
         }
     }
 
+}
+
+
+//Ligth Mode
+
+.light-body {
+    background-color: $light-bgnd;
+    color: $black;
+}
+
+.light-color {
+    background-color: $white;
+    color: $black;
+}
+
+.light-color::placeholder {
+    color: $black;
+}
+
+.light-mode::before {
+    content: 'Dark';
+    color: $black;
+}
+
+.shadow {
+    box-shadow: 1rem 1rem 1rem rgba(110, 110, 110, 0.3);
 }
