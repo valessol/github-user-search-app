@@ -12,3 +12,7 @@ Through this app, users are be able to:
 - Search for GitHub users by their username
 - See relevant user information based on their search
 - Switch between light and dark themes
+
+Sincerely, I think that is really difficult to search an user if I don't know their usernames previously. So, I put them in a select list and you can now choose the user you want to search.
+
+![](https://github.com/valessol/github-user-search-app/blob/dev/media/2.png?raw=true)

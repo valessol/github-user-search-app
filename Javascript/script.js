@@ -1,17 +1,41 @@
-const userSearch = document.querySelector('input');
+// const userSearch = document.querySelector('input');
 const button = document.querySelector('button');
+const userList = document.querySelector('#user-list');
 
 const search = () => {
-    const username = userSearch.value;
+    const username = userList.value;
     return username;
 }
 
+const getUsersList = async () => {
+    const data = await fetch (`https://api.github.com/repositories`);
+    const dataJSON = await data.json();
+    const users = [];
+    dataJSON.forEach((p) => {
+        const username = p.owner.login;
+        users.push(username);
+    })
+
+    const uniqueUsers = users.reduce ((ac, user) => {
+        if (!ac.includes (user)) {
+            ac.push(user);
+        } return ac;
+    }, [])
+
+    uniqueUsers.forEach ((p) => {
+        const userList = document.querySelector('#user-list');
+        const option = document.createElement('option');
+        option.textContent = p;
+        option.setAttribute('value', p)
+        userList.appendChild(option);
+    })
+}
+    
+
 const getDataFromAPI = async () => {
     const user = search();
-    //const user = 'octocat';
     const data = await fetch (`https://api.github.com/users/${user}`);
     const response = await data.json();
-    //console.log(response)
     return response;
 }
 
@@ -157,7 +181,8 @@ const replaceCompany = async () => {
 }
 
 const click = ()=> {
-    search();
+    const username = search();
+    if (username === '') return;
     getDataFromAPI();
     replaceAvatar()
     replaceUsername();
@@ -174,11 +199,12 @@ const click = ()=> {
     console.log(getDataFromAPI().then(response =>(console.log(response))))
 }
 
+getUsersList();
 // userSearch.addEventListener('keyup', event => {
 //     if (event.keyCode === 10) click()
 //     return
 // })
-button.addEventListener('click', click)
+button.addEventListener('click', click);
 
 // const enter = (event) =>{
 //     if (event.keyCode === 13 || event.wich === 13){

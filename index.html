@@ -14,9 +14,12 @@
             <div class="header__mode-icon"><i class="fa fa-adjust header--icon"></i></div>
         </div>
         <div class="header__search rounded pd-10">
-            <i class="fa fa-search header__search-icon mg-10"></i> 
             <form action="" method="GET" class="header__search-form">
-                <input type="search" class="mg-10 header__search-text" placeholder="Search Github username..."> 
+                <i class="fa fa-search header__search-icon mg-10"></i> 
+                <select class="header__search-select" name="user-list" id="user-list">
+                    <option class="user-list" value="">Select user from list...</option>
+                </select>
+                <!-- <input type="search" class="mg-10 header__search-text" placeholder="Search Github username...">  -->
                 <button type="button" class="header__search-button mg-10 rounded">Search</button>
             </form>
             

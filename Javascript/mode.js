@@ -8,7 +8,7 @@ const lightMode = () => {
     search.classList.toggle('light-color');
     search.classList.toggle('shadow');
 
-    const searchText = document.querySelector('.header__search-text');
+    const searchText = document.querySelector('.header__search-select');
     searchText.classList.toggle('light-color');
 
     const data = document.querySelector('.data');
