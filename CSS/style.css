@@ -129,14 +129,11 @@ body {
   .data--disabled i, .data--disabled p {
     color: #a1a0a0; }
 
-footer {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translate(-50%, -50%); }
-  footer h5 {
-    font-weight: normal;
-    font-size: 1.4rem; }
+footer h5 {
+  font-weight: normal;
+  font-size: 1.4rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem; }
 
 @media (min-width: 375px) {
   .header__search {
@@ -161,7 +158,12 @@ footer {
     grid-column: 1 / 2; }
   .data__twitter {
     grid-column: 2 / 3;
-    grid-row: 1 / 2; } }
+    grid-row: 1 / 2; }
+  footer {
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translate(-50%, -50%); } }
 
 @media (min-width: 1024px) {
   .container {

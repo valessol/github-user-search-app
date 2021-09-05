@@ -15,4 +15,4 @@ Through this app, users are be able to:
 
 Sincerely, I think that is really difficult to search an user if I don't know their usernames previously. So, I put them in a select list and you can now choose the user you want to search.
 
-![](https://github.com/valessol/github-user-search-app/blob/dev/media/2.png?raw=true)
+![](https://github.com/valessol/github-user-search-app/blob/master/media/2.png?raw=true)

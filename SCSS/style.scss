@@ -185,13 +185,11 @@ body{
 }
 
 footer {
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    transform: translate(-50%, -50%);
     h5 {
         font-weight: normal;
         font-size: 1.4rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
     }
 }
 
@@ -240,6 +238,13 @@ footer {
             grid-column: 2 / 3;
             grid-row: 1 / 2;
         }
+    }
+
+    footer {
+        position: absolute;
+        bottom: 1%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
