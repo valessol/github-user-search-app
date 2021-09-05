@@ -51,7 +51,7 @@ const replaceDate = async () => {
     const date = userInfo.created_at;
     const newDate = new Date (date)
     
-    const userJoin = document.querySelector('.data__date');
+    const userJoin = document.querySelector('.data__date--span');
     userJoin.textContent = newDate.toDateString();
     return
 }
@@ -67,34 +67,28 @@ const replaceDescription = async () => {
 
 const replaceRepos = async () => {
     const user = await getDataFromAPI();
-    const userReposUrl = user.repos_url;
-    const userRepos = await fetch(userReposUrl);
-    const userReposJSON = await userRepos.json();
+    const userRepos = user.public_repos;
     
     const userReposNumber = document.querySelector('.data__repos');
-    userReposNumber.textContent = userReposJSON.length;
+    userReposNumber.textContent = userRepos;
     return
 }
 
 const replaceFollowers = async () => {
     const user = await getDataFromAPI();
-    const userFollowersUrl = user.followers_url;
-    const userFollowers = await fetch(userFollowersUrl);
-    const userFollowersJSON = await userFollowers.json();
+    const userFollowers = user.followers;
     
     const userFollowersNumber = document.querySelector('.data__followers');
-    userFollowersNumber.textContent = userFollowersJSON.length;
+    userFollowersNumber.textContent = userFollowers;
     return
 }
 
 const replaceFollowing = async () => {
     const user = await getDataFromAPI();
-    const username = user.login;
-    const userFollowing = await fetch(`https://api.github.com/users/${username}/following`);
-    const userFollowingJSON = await userFollowing.json();
+    const userFollowing = user.following;
     
     const userFollowingNumber = document.querySelector('.data__following');
-    userFollowingNumber.textContent = userFollowingJSON.length;
+    userFollowingNumber.textContent = userFollowing;
     return
 }
 
@@ -102,30 +96,32 @@ const replaceLocation = async () => {
     const user = await getDataFromAPI();
     const userLocation = user.location;
     const userLoc = document.querySelector('.data__location-text');
+    const location = document.querySelector('.data__location');
 
     if (userLocation === null) {
-        const location = document.querySelector('.data__location');
         location.classList.add('data--disabled');
         userLoc.textContent = 'Not Available';
         return;
     }
 
     userLoc.textContent = userLocation;
+    location.classList.remove('data--disabled');
     return
 }
 const replaceBlog = async () => {
     const user = await getDataFromAPI();
     const userBlog = user.blog;
     const userB = document.querySelector('.data__blog-url');
+    const blogUrl = document.querySelector('.data__url');
 
-    if (userBlog === null) {
-        const blogUrl = document.querySelector('.data__url');
+    if (userBlog === null || userBlog === "") {
         blogUrl.classList.add('data--disabled');
         userB.textContent = 'Not Available';
         return;
     }
 
     userB.textContent = userBlog;
+    blogUrl.classList.remove('data--disabled');
     return
 }
 const replaceTwitter = async () => {
@@ -135,6 +131,7 @@ const replaceTwitter = async () => {
     const dataTwitter = document.querySelector('.data__twitter');
 
     if (userTwitter === null) {    
+        dataTwitter.classList.add('data--disabled');
         userTwit.textContent = 'Not Available';
         return;
     }
@@ -147,14 +144,15 @@ const replaceCompany = async () => {
     const user = await getDataFromAPI();
     const userCompany = user.company;
     const userComp = document.querySelector('.data__company-name');
+    const company = document.querySelector('.data__company');
 
     if (userCompany === null) {
-        const company = document.querySelector('.data__company');
         company.classList.add('data--disabled');
         userComp.textContent = 'Not Available';
         return;
     }
     userComp.textContent = userCompany;
+    company.classList.remove('data--disabled');
     return
 }
 
@@ -176,6 +174,20 @@ const click = ()=> {
     console.log(getDataFromAPI().then(response =>(console.log(response))))
 }
 
-button.addEventListener('click', search)
+// userSearch.addEventListener('keyup', event => {
+//     if (event.keyCode === 10) click()
+//     return
+// })
 button.addEventListener('click', click)
 
+// const enter = (event) =>{
+//     if (event.keyCode === 13 || event.wich === 13){
+//         click()
+//         console.log('dentro del if', event)
+//         return
+//     }
+//     //console.log(event)
+//     return
+// }
+
+// userSearch.addEventListener('keyup', enter)
