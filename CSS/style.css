@@ -66,7 +66,10 @@ body {
       padding: 2rem;
       font-size: 1.6rem;
       font-weight: bold;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: transform 0.5s; }
+      .header__search-button:hover {
+        transform: scale(0.9); }
   .header__mode {
     text-transform: uppercase;
     font-weight: bold;
@@ -76,6 +79,8 @@ body {
       content: 'Light';
       color: #ffffff;
       margin-right: 1rem; }
+    .header__mode-icon::before:hover {
+      color: #4a63f3; }
 
 .data {
   display: grid;

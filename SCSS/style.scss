@@ -86,6 +86,7 @@ body{
             border: none;
             color: $white;
             width: 60%;
+            
         }
         &-button {
             background-color: $light-blue;
@@ -96,6 +97,10 @@ body{
             font-size: 1.6rem;
             font-weight: bold;
             cursor: pointer;
+            transition: transform 0.5s;
+            &:hover {
+                transform: scale(0.9);
+            }
         }
     }
     &__mode {
@@ -108,7 +113,9 @@ body{
             color: $white;
             margin-right: 1rem;
          } 
-        
+        &-icon::before:hover {
+            color: rgb(74, 99, 243);
+        }
     }
 }
 
