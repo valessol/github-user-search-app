@@ -12,6 +12,25 @@ $font: 'Space Mono', monospace;
 $light-bgnd: rgb(206, 219, 235);
 $black: #000000;
 
+@media (prefers-color-scheme: light){
+    :root {
+        --bgnd-color: rgb(206, 219, 235);
+        --font-color: #000000;
+        --content-color:#ffffff;
+        --shadow: 1rem 1rem 1rem rgba(110, 110, 110, 0.3);
+        color-scheme: light;
+    }
+}
+@media (prefers-color-scheme: dark){
+    :root {
+        --bgnd-color: rgb(206, 219, 235);
+        --font-color: #000000;
+        --content-color:#ffffff;
+        --shadow: 1rem 1rem 1rem rgba(110, 110, 110, 0.3);
+        color-scheme: dark;
+    }
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -24,10 +43,12 @@ html{
 
 body{
     font-size: 14px;
-    background-color: $bgnd;
-    color: $white;
+    background-color: var(--bgnd-color);
+    color: var(--font-color);
     font-family: $font;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 //Utilidades
@@ -69,8 +90,9 @@ body{
     &__search {
         grid-column: 1 / 3;
         width: 100%;
-        background-color: $content;
+        background-color: var(--content-color);
         padding: 1rem 0;
+        box-shadow: var(--shadow);
         &-icon{
             transform: scale(1.5);
             color: $light-blue;
@@ -82,16 +104,16 @@ body{
         }
         &-select {
             font-family: $font;
-            background-color: $content;
+            background-color: var(--content-color);
             border: none;
-            color: $white;
+            color: var(--font-color);
             width: 60%;
             
         }
         &-button {
             background-color: $light-blue;
             border: none;
-            color: $white;
+            color: white;
             font-family: $font;
             padding: 2rem;
             font-size: 1.6rem;
@@ -110,7 +132,7 @@ body{
         cursor: pointer;
         &-icon::before {
             content: 'Light';
-            color: $white;
+            color: var(--font-color);
             margin-right: 1rem;
          } 
         &-icon::before:hover {
@@ -125,9 +147,10 @@ body{
     grid-template-columns: 1fr 2fr;
     grid-template-rows: repeat(2, auto);
     align-items: center;
-    background-color: $content;
+    background-color: var(--content-color);
     margin-top: 2rem;
     margin-bottom: 2rem;
+    box-shadow: var(--shadow);
     &__image {
         width: 10rem;
         border-radius: 50%;
@@ -155,7 +178,7 @@ body{
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
-        background-color: $bgnd;
+        background-color: var(--bgnd-color);
         margin: 2rem 0;
         padding: 1rem;
         h4 {
@@ -192,6 +215,7 @@ body{
 }
 
 footer {
+    
     h5 {
         font-weight: normal;
         font-size: 1.4rem;
@@ -248,10 +272,7 @@ footer {
     }
 
     footer {
-        position: absolute;
-        bottom: 1%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+       margin-top: auto;
     }
 }
 
@@ -305,25 +326,25 @@ footer {
 
 //Ligth Mode
 
-.light-body {
-    background-color: $light-bgnd;
-    color: $black;
-}
+// .light-body {
+//     background-color: $light-bgnd;
+//     color: $black;
+// }
 
-.light-color {
-    background-color: $white;
-    color: $black;
-}
+// .light-color {
+//     background-color: var(--font-color);
+//     color: $black;
+// }
 
-.light-color::placeholder {
-    color: $black;
-}
+// .light-color::placeholder {
+//     color: $black;
+// }
 
-.light-mode::before {
-    content: 'Dark';
-    color: $black;
-}
+// .light-mode::before {
+//     content: 'Dark';
+//     color: $black;
+// }
 
-.shadow {
-    box-shadow: 1rem 1rem 1rem rgba(110, 110, 110, 0.3);
-}
+// .shadow {
+//     box-shadow: 1rem 1rem 1rem rgba(110, 110, 110, 0.3);
+// }

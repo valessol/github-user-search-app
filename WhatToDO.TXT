@@ -36,3 +36,9 @@ Train your eye for detail by getting your solution as close to the design as you
 Use a JavaScript framework/library to practice templating and/or building using components
 
 Try estimating the time it will take for you to build the project. Then see if the time taken matches up to your estimate. Project estimations are a skill that is often overlooked, but is important for professional developers
+
+
+firstChild.children[3].content.attributes[2].ownerDocument.all.theme-color.attributes[1].nodeValue
+
+children[0].children.theme-color.media
+outerHTML: "<meta name=\"theme-color\" media=\"(prefers-color-scheme: dark\" content=\"black\">"
